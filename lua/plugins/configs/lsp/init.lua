@@ -4,7 +4,7 @@ local lspconfig_util = require "lspconfig.util"
 local lspconfig = require "lspconfig"
 require "plugins.configs.lsp.lua"
 require "plugins.configs.lsp.javascript"
-require "plugins.configs.lsp.java"
+-- require "plugins.configs.lsp.java"
 require "plugins.configs.lsp.python"
 local basic_servers = {
   "zls",
