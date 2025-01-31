@@ -6,10 +6,14 @@ require "plugins.configs.lsp.lua"
 require "plugins.configs.lsp.javascript"
 -- require "plugins.configs.lsp.java"
 require "plugins.configs.lsp.python"
+require "plugins.configs.lsp.typst"
+require "plugins.configs.lsp.bash"
+
 local basic_servers = {
   "zls",
   "gleam",
   "lemminx",
+  "gopls",
   "cmake",
   "unison",
   "nil_ls",
@@ -51,11 +55,6 @@ lspconfig.clangd.setup {
   formatter = "clang-format",
 }
 
-lspconfig.tinymist.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-  offset_encoding = "utf-8",
-}
 -- Merge the capabilities
 capabilities.workspace = capabilities.workspace or {}
 capabilities.workspace.didChangeWatchedFiles = {
