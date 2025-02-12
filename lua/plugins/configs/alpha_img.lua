@@ -1,4 +1,7 @@
 return {
+  qmi_deptrai = [[
+    Quang Minh đẹp trai quá aaaaaaaaaaaaaaaaaaaaaaa
+    ]],
   luffy_small = [[
   ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡠⠤⠒⠈⠉⠉⠉⠉⠉⠉⠐⠢⢄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
   ⠀⠀⠀⠀⠀⠀⠀⠀⣠⠖⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠑⢦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀

@@ -20,10 +20,25 @@ return {
       pcall(telescope.load_extension, "fzf")
       pcall(telescope.load_extension, "ui-select")
 
-      vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
+      vim.keymap.set(
+        "n",
+        "<leader>ff",
+        builtin.find_files,
+        { desc = "Find files in current working directory" }
+      )
       vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
-      vim.keymap.set("n", "<leader>fk", builtin.keymaps, {})
-      vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
+      vim.keymap.set(
+        "n",
+        "<leader>fk",
+        builtin.keymaps,
+        { desc = "Find Keymaps" }
+      )
+      vim.keymap.set(
+        "n",
+        "<leader>fg",
+        builtin.live_grep,
+        { desc = "Fuzzy find string in all files in current working directory" }
+      )
       vim.keymap.set("n", "<leader>fr", function()
         builtin.oldfiles { only_cwd = true }
       end, {})

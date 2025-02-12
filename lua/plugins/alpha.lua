@@ -14,6 +14,7 @@ return {
 
     local logo_data = require "plugins.configs.alpha_img"
     local logos = {
+      logo_data.qmi_deptrai,
 
       logo_data.luffy_nika,
       logo_data.luffy_small,
