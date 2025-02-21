@@ -7,6 +7,7 @@ require "plugins.configs.lsp.javascript"
 -- require "plugins.configs.lsp.java"
 require "plugins.configs.lsp.python"
 require "plugins.configs.lsp.typst"
+require "plugins.configs.lsp.php"
 require "plugins.configs.lsp.bash"
 
 local basic_servers = {
