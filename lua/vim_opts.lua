@@ -67,7 +67,7 @@ opt.splitbelow = true
 
 -- save undo history
 opt.undofile = true
-opt.iskeyword:append "-"
+-- opt.iskeyword:append "-"
 
 opt.updatetime = 250
 opt.swapfile = false
@@ -78,7 +78,7 @@ vim.keymap.set("n", "<c-j>", ":wincmd j<CR>")
 vim.keymap.set("n", "<c-h>", ":wincmd h<CR>")
 vim.keymap.set("n", "<c-l>", ":wincmd l<CR>")
 
-vim.keymap.set("n", "<Esc>", ":nohlsearch<CR>")
+-- vim.keymap.set("n", "<Esc>", ":nohlsearch<CR>")
 
 vim.g.have_nerd_font = true
 
@@ -92,6 +92,8 @@ vim.cmd [[command! CopyFilePath let @+ = expand('%:p')]]
 -- greatest keymap ever
 vim.keymap.set("x", "<leader>p", '"_dP')
 
+-- To appropriately highlight codefences returned from denols,
+-- you will need to augment vim.g.markdown_fenced languages
 vim.g.markdown_fenced_languages = { "ts=typescript" }
 
 -- notes: listchars
