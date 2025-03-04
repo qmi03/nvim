@@ -5,17 +5,21 @@ lspconfig.denols.setup {
   capabilities = capabilities,
   on_attach = on_attach,
   filetypes = {
-    "markdown",
-    "javascript",
-    "javascriptreact",
-    "javascript.jsx",
-    -- "typescript",
-    "typescriptreact",
-    "typescript.tsx",
     "json",
+    "jsonc",
+    "markdown",
     "html",
     "css",
+
+    "javascript",
+    "javascriptreact",
+    "jsx",
+
+    "typescript",
+    "typescriptreact",
+    "tsx",
   },
+  root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
 }
 
 local vue_language_server_path =
@@ -31,7 +35,7 @@ lspconfig.ts_ls.setup {
     },
   },
   filetypes = {
-     "typescript",
+    "typescript",
     "javascript",
     "javascriptreact",
     "typescriptreact",
