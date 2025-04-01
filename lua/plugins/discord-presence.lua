@@ -10,12 +10,12 @@ return {
       main_image = "neovim", -- Main image display (either "neovim" or "file")
       -- client_id = "793271441293967371",            -- Use your own Discord application client id (not recommended)
       -- log_level = "info", -- Log messages at or above this level (one of the following: "debug", "info", "warn", "error")
-      debounce_timeout = 10, -- Number of seconds to debounce events (or calls to `:lua package.loaded.presence:update(<filename>, true)`)
+      debounce_timeout = 5, -- Number of seconds to debounce events (or calls to `:lua package.loaded.presence:update(<filename>, true)`)
       enable_line_number = false, -- Displays the current line number instead of the current project
       blacklist = { ".*/dotfiles", "oil.*" }, -- A list of strings or Lua patterns that disable Rich Presence if the current file name, path, or workspace matches
-      buttons = true, -- Configure Rich Presence button(s), either a boolean to enable/disable, a static table (`{{ label = "<label>", url = "<url>" }, ...}`, or a function(buffer: string, repo_url: string|nil): table)
+      buttons = false, -- Configure Rich Presence button(s), either a boolean to enable/disable, a static table (`{{ label = "<label>", url = "<url>" }, ...}`, or a function(buffer: string, repo_url: string|nil): table)
       file_assets = {}, -- Custom file asset definitions keyed by file names and extensions (see default config at `lua/presence/file_assets.lua` for reference)
-      show_time = true, -- Show the timer
+      show_time = false, -- Show the timer
 
       -- Rich Presence text options
       editing_text = "Editing %s", -- Format string rendered when an editable file is loaded in the buffer (either string or function(filename: string): string)
