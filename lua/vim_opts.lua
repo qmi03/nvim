@@ -101,7 +101,8 @@ vim.g.markdown_fenced_languages = { "ts=typescript" }
 opt.inccommand = "split"
 
 -- minimal number of line below when scrolling
-opt.scrolloff = 12
+opt.scrolloff = 16
+opt.sidescrolloff = 32
 
 -- diagnostic keymap
 -- terminal esc
