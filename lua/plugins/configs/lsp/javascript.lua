@@ -1,6 +1,11 @@
 local my_utils = require "plugins.configs.lsp.utils"
 local on_attach, capabilities = my_utils.on_attach, my_utils.capabilities
 local lspconfig = require "lspconfig"
+
+-- To appropriately highlight codefences returned from denols,
+-- you will need to augment vim.g.markdown_fenced languages
+vim.g.markdown_fenced_languages = { "ts=typescript" }
+
 lspconfig.denols.setup {
   capabilities = capabilities,
   on_attach = on_attach,

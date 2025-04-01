@@ -1,0 +1,39 @@
+vim.api.nvim_create_user_command(
+  "W",
+  "write",
+  { desc = "Fix vim write command to use when accidentally use capital w" }
+)
+
+-- check lua/plugins/noice.lua config
+-- vim.keymap.set("n", "<Esc>", ":nohlsearch<CR>")
+
+-- greatest keymap ever
+vim.keymap.set("x", "<leader>p", '"_dP')
+
+-- cd into current directory
+vim.cmd [[
+  command! CdCurrDir cd %:p:h
+]]
+-- copy file path to clipboard
+vim.cmd [[command! CopyFilePath let @+ = expand('%:p')]]
+
+-- Highlight when yanking (copying) text
+--  Try it with `yap` in normal mode
+--  See `:help vim.highlight.on_yank()`
+vim.api.nvim_create_autocmd("TextYankPost", {
+  desc = "Highlight when yanking (copying) text",
+  group = vim.api.nvim_create_augroup(
+    "kickstart-highlight-yank",
+    { clear = true }
+  ),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})
+
+vim.keymap.set(
+  "n",
+  "J",
+  function() vim.diagnostic.open_float({ focusable = true }) end,
+  { desc = "Expand an Error into a float" }
+)

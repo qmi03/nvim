@@ -6,7 +6,6 @@ return {
     end
     local opts = { noremap = true, silent = true }
     buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-    buf_set_keymap("n", "J", "<cmd>lua vim.diagnostic.open_float({focusable = true})<CR>", opts)
     buf_set_keymap("n", "gD", "<cmd>Telescope lsp_type_definitions<CR>", opts)
     buf_set_keymap("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
     buf_set_keymap("n", "gh", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
