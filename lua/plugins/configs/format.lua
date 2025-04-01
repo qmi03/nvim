@@ -4,9 +4,6 @@ null_ls.setup {
     -- js
     -- require("none-ls.diagnostics.eslint_d"),
 
-    -- lua
-    null_ls.builtins.formatting.stylua,
-
     -- ruby
     null_ls.builtins.formatting.rubocop,
     null_ls.builtins.diagnostics.rubocop,
@@ -30,4 +27,4 @@ null_ls.setup {
     null_ls.builtins.formatting.yamlfmt,
   },
 }
-vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
+vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, { desc = "Format current buffer" })
