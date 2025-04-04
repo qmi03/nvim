@@ -75,7 +75,7 @@ opt.inccommand = "split"
 
 -- minimal number of line below when scrolling
 opt.scrolloff = 16
-opt.sidescrolloff = 32
+opt.sidescrolloff = 16
 
 -- diagnostic keymap
 -- terminal esc

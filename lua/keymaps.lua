@@ -11,9 +11,9 @@ vim.api.nvim_create_user_command(
 vim.keymap.set("x", "<leader>p", '"_dP')
 
 -- cd into current directory
-vim.cmd [[
-  command! CdCurrDir cd %:p:h
-]]
+-- vim.cmd [[
+--   command! CdCurrDir cd %:p:h
+-- ]]
 -- copy file path to clipboard
 vim.cmd [[command! CopyFilePath let @+ = expand('%:p')]]
 
