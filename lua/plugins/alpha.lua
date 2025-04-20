@@ -1,28 +1,28 @@
 return {
   "goolord/alpha-nvim",
+  lazy = true,
+  event = "VimEnter",
   dependencies = {
     "nvim-tree/nvim-web-devicons",
     "stevearc/oil.nvim",
     "nvim-telescope/telescope.nvim",
+    "nvim-telescope/telescope-media-files.nvim",
   },
-
   config = function()
     local alpha = require "alpha"
     local dashboard = require "alpha.themes.dashboard"
 
     -- Set header
-
     local logo_data = require "plugins.configs.alpha_img"
     local logos = {
       -- logo_data.qmi_deptrai,
-
       logo_data.luffy_nika,
       logo_data.luffy_small,
       logo_data.one_piece_1,
       logo_data.one_piece_2,
     }
 
-    math.randomseed(os.time())
+    math.randomseed(vim.loop.hrtime())
     local logo = logos[math.random(#logos)]
 
     local function pick_color()
@@ -32,11 +32,17 @@ return {
 
     dashboard.section.header.val = vim.split(logo, "\n")
     dashboard.section.header.opts.hl = pick_color()
+    dashboard.section.header.opts.position = "center"
+
+    -- Dynamic header padding
+    local height = vim.o.lines - vim.o.cmdheight
+    local header_padding = math.floor((height - #dashboard.section.header.val) / 4)
+    dashboard.section.header.opts.margin = header_padding
 
     -- Set menu
     dashboard.section.buttons.val = {
-      dashboard.button("e", "  > New file", ":ene <BAR> startinsert <CR>"),
       dashboard.button("f", "󰱼  > Find file", ":Telescope find_files<CR>"),
+      dashboard.button("g", "󰱼  > Find grep", ":Telescope live_grep<CR>"),
       dashboard.button(
         "r",
         "  > Recent",
@@ -51,27 +57,22 @@ return {
     }
 
     -- Set footer
-    --   NOTE: This is currently a feature in my fork of alpha-nvim (opened PR #21, will update snippet if added to main)
-    --   To see test this yourself, add the function as a dependecy in packer and uncomment the footer lines
-    --   ```init.lua
-    --   return require('packer').startup(function()
-    --       use 'wbthomason/packer.nvim'
-    --       use {
-    --           'goolord/alpha-nvim', branch = 'feature/startify-fortune',
-    --           requires = {'BlakeJC94/alpha-nvim-fortune'},
-    --           config = function() require("config.alpha") end
-    --       }
-    --   end)
-    --   ```
-    -- local fortune = require("alpha.fortune")
-    -- dashboard.section.footer.val = fortune()
+    local function get_nvim_version()
+      local version = vim.version()
+      return string.format("Neovim v%d.%d.%d", version.major, version.minor, version.patch)
+    end
+
+    dashboard.section.footer.val = get_nvim_version()
+    dashboard.section.footer.opts.hl = "Comment"
 
     -- Send config to alpha
     alpha.setup(dashboard.opts)
 
-    -- Disable folding on alpha buffer
+    -- Disable folding on alpha buffer and add keymaps
     vim.cmd [[
-    autocmd FileType alpha setlocal nofoldenable
-]]
+      autocmd FileType alpha setlocal nofoldenable
+      autocmd FileType alpha nnoremap <buffer> <cr> <cmd>lua require('alpha.themes.dashboard').buttons.eval()<cr>
+      autocmd FileType alpha nnoremap <buffer> q :q<cr>
+    ]]
   end,
 }
