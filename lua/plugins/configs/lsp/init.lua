@@ -10,6 +10,7 @@ require "plugins.configs.lsp.typst"
 require "plugins.configs.lsp.php"
 require "plugins.configs.lsp.bash"
 require "plugins.configs.lsp.emmet"
+require "plugins.configs.lsp.nix"
 
 local basic_servers = {
   "zls",
@@ -18,7 +19,6 @@ local basic_servers = {
   "gopls",
   "cmake",
   "unison",
-  "nil_ls",
   "taplo",
   "texlab",
   "dockerls",
