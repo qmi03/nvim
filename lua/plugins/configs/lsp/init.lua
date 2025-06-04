@@ -51,8 +51,10 @@ lspconfig.rust_analyzer.setup {
 lspconfig.clangd.setup {
   capabilities = capabilities,
   on_attach = on_attach,
+  cmd = { "clangd", "--background-index", "--clang-tidy", "--log=verbose" },
   init_options = {
     clangdFileStatus = true,
+    fallbackFlags = { "-std=c++11" },
   },
   formatter = "clang-format",
 }
