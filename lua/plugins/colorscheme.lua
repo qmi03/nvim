@@ -4,10 +4,6 @@ return {
     name = "catppuccin",
     priority = 1000,
     config = function()
-      local latte = require("catppuccin.palettes").get_palette "latte"
-      local frappe = require("catppuccin.palettes").get_palette "frappe"
-      local macchiato = require("catppuccin.palettes").get_palette "macchiato"
-      local mocha = require("catppuccin.palettes").get_palette "mocha"
       require("catppuccin").setup {
         flavour = "mocha", -- latte, frappe, macchiato, mocha
         background = {     -- :h background
@@ -64,15 +60,9 @@ return {
           -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
         },
       }
-
-      -- setup must be called before loading
-      -- vim.cmd.colorscheme "catppuccin"
     end,
   },
   {
     "rebelot/kanagawa.nvim",
-    config = function ()
-      vim.cmd.colorscheme "kanagawa"
-    end
   }
 }

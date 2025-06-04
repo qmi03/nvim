@@ -22,3 +22,5 @@ require("lazy").setup {
     lazy = true,
   },
 }
+require "colorscheme"
+
