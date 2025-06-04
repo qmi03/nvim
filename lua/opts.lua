@@ -2,7 +2,7 @@ vim.g.mapleader = " "
 local opt = vim.opt -- for conciseness
 
 vim.g.mapleader = " "
-vim.g.background = "light"
+vim.g.background = "dark"
 -- line numbers
 opt.relativenumber = true
 opt.number = true
@@ -27,7 +27,10 @@ opt.cmdheight = 0
 -- opt.tw = 80
 opt.colorcolumn = "80"
 
--- search settings
+-- Enable break indent
+opt.breakindent = true
+
+-- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 opt.ignorecase = true
 opt.smartcase = true
 
@@ -64,18 +67,56 @@ opt.splitbelow = true
 opt.undofile = true
 -- opt.iskeyword:append "-"
 
+-- Decrease update time
 opt.updatetime = 250
+
+-- Decrease mapped sequence wait time
+opt.timeoutlen = 300
+
 opt.swapfile = false
 
--- vim.g.have_nerd_font = true
+-- Configure how new splits should be opened
+opt.splitright = true
+opt.splitbelow = true
 
--- notes: listchars
 -- Preview substitution live
 opt.inccommand = "split"
+
+-- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
+-- instead raise a dialog asking if you wish to save the current file(s)
+-- See `:help 'confirm'`
+vim.opt.confirm = true
 
 -- minimal number of line below when scrolling
 opt.scrolloff = 16
 opt.sidescrolloff = 16
 
--- diagnostic keymap
+vim.diagnostic.config {
+  severity_sort = true,
+  float = { border = 'rounded', source = 'if_many' },
+  underline = { severity = vim.diagnostic.severity.ERROR },
+  signs = vim.g.have_nerd_font and {
+    text = {
+      [vim.diagnostic.severity.ERROR] = '󰅚 ',
+      [vim.diagnostic.severity.WARN] = '󰀪 ',
+      [vim.diagnostic.severity.INFO] = '󰋽 ',
+      [vim.diagnostic.severity.HINT] = '󰌶 ',
+    },
+  } or {},
+  virtual_text = {
+    source = 'if_many',
+    spacing = 2,
+    format = function(diagnostic)
+      local diagnostic_message = {
+        [vim.diagnostic.severity.ERROR] = diagnostic.message,
+        [vim.diagnostic.severity.WARN] = diagnostic.message,
+        [vim.diagnostic.severity.INFO] = diagnostic.message,
+        [vim.diagnostic.severity.HINT] = diagnostic.message,
+      }
+      return diagnostic_message[diagnostic.severity]
+    end,
+  },
+}
+
+opt.mouse = 'a'
 -- terminal esc

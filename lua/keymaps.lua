@@ -10,10 +10,6 @@ vim.api.nvim_create_user_command(
 -- greatest keymap ever
 vim.keymap.set("x", "<leader>p", '"_dP')
 
--- cd into current directory
--- vim.cmd [[
---   command! CdCurrDir cd %:p:h
--- ]]
 -- copy file path to clipboard
 vim.cmd [[command! CopyFilePath let @+ = expand('%:p')]]
 
@@ -37,3 +33,5 @@ vim.keymap.set(
   function() vim.diagnostic.open_float({ focusable = true }) end,
   { desc = "Expand an Error into a float" }
 )
+-- Diagnostic keymaps
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
