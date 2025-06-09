@@ -76,7 +76,7 @@ return {
         ["<CR>"] = "actions.select",
         ["<C-p>"] = "actions.preview",
         ["<C-c>"] = "actions.close",
-        ["<C-l>"] = "actions.refresh",
+        ["<C-r>"] = "actions.refresh",
         ["-"] = "actions.parent",
         ["_"] = "actions.open_cwd",
         ["`"] = "actions.cd",
@@ -92,13 +92,13 @@ return {
         ["g\\"] = "actions.toggle_trash",
         -- Additional useful keymaps:
         ["gy"] = "actions.yank_entry", -- Yank the filepath to register
-        ["<C-t>"] = { -- Open in a new tab
+        ["<C-t>"] = {                  -- Open in a new tab
           "actions.select",
           opts = { tab = true }
         },
-        ["<leader>t"] = "actions.open_terminal", -- Open terminal in current directory
+        ["<leader>t"] = "actions.open_terminal",  -- Open terminal in current directory
         ["<leader>q"] = "actions.send_to_qflist", -- Send files to quickfix list
-        ["<C-f>"] = {                       -- Preview scroll down
+        ["<C-f>"] = {                             -- Preview scroll down
           "actions.preview_scroll_down",
           mode = "n",
         },
@@ -106,6 +106,12 @@ return {
           "actions.preview_scroll_up",
           mode = "n",
         },
+        ["<c-h>"] = "<cmd>TmuxNavigateLeft<cr>",
+        ["<c-j>"] = "<cmd>TmuxNavigateDown<cr>",
+        ["<c-k>"] = "<cmd>TmuxNavigateUp<cr>",
+        ["<c-l>"] = "<cmd>TmuxNavigateRight<cr>",
+        ["<c-\\>"] = "<cmd>TmuxNavigatePrevious<cr>",
+
       },
       -- Set to false to disable all of the above keymaps
       use_default_keymaps = false,
