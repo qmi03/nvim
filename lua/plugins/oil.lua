@@ -125,11 +125,6 @@ return {
         -- This function defines what will never be shown, even when `show_hidden` is set
         is_always_hidden = function(name, bufnr)
           local always_hidden = {
-            "__pycache__",
-            ".DS_Store",
-            "node_modules",
-            ".git",
-            ".vscode"
           }
           for _, hidden_name in ipairs(always_hidden) do
             if name == hidden_name then

@@ -8,7 +8,7 @@ require "plugins.configs.lsp.java"
 require "plugins.configs.lsp.python"
 require "plugins.configs.lsp.typst"
 require "plugins.configs.lsp.php"
-require "plugins.configs.lsp.bash"
+-- require "plugins.configs.lsp.bash"
 require "plugins.configs.lsp.emmet"
 require "plugins.configs.lsp.nix"
 
