@@ -7,6 +7,9 @@ return {
     end,
   },
   {
+    'nvim-lua/lsp-status.nvim',
+  },
+  {
     "nvimtools/none-ls.nvim",
     dependencies = {
       "nvimtools/none-ls-extras.nvim",
