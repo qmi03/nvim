@@ -27,5 +27,6 @@ require("lazy").setup {
     lazy = true,
   },
 }
-require "colorscheme"
 
+-- setup colorscheme after setting up lazy
+require "colorscheme"
