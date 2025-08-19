@@ -145,7 +145,7 @@ return {
       end
 
       local status = vim.o.background == "dark" and { fg = pal.black, bg = pal.white } or
-      { fg = pal.white, bg = pal.black }
+          { fg = pal.white, bg = pal.black }
 
       local groups = {
         -- statusline
@@ -427,7 +427,7 @@ return {
         c.fileinfo,
         c.default, -- must be last
       },
-      {        -- right
+      {            -- right
         c.lsp_status,
         c.lsp_error,
         c.lsp_warn,
