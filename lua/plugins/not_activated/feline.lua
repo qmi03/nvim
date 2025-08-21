@@ -312,7 +312,7 @@ return {
       return table.concat(list, " ")
     end
 
-    -- Create a table that contians every status line commonent
+    -- Create a table that contians every status line component
     local c = {
       vimode = {
         provider = function()
