@@ -1,5 +1,5 @@
 local utils = require "utils"
-local my_utils = require "plugins.configs.lsp.utils"
+local my_utils = require "plugins.core.lsp.servers.utils"
 local capabilities, on_attach = my_utils.capabilities, my_utils.on_attach
 --local null_ls = require("null-ls")
 -- null_ls.setup({

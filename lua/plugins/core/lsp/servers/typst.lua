@@ -1,4 +1,4 @@
-local my_utils = require "plugins.configs.lsp.utils"
+local my_utils = require "plugins.core.lsp.servers.utils"
 local old_on_attach, capabilities = my_utils.on_attach, my_utils.capabilities
 local on_attach = function(client, bufnr)
   old_on_attach(client, bufnr)

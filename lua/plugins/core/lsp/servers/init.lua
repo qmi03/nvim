@@ -1,16 +1,16 @@
-local my_utils = require "plugins.configs.lsp.utils"
+local my_utils = require "plugins.core.lsp.servers.utils"
 local on_attach, capabilities = my_utils.on_attach, my_utils.capabilities
 local lspconfig_util = require "lspconfig.util"
 local lspconfig = require "lspconfig"
-require "plugins.configs.lsp.lua"
-require "plugins.configs.lsp.javascript"
-require "plugins.configs.lsp.java"
-require "plugins.configs.lsp.python"
-require "plugins.configs.lsp.typst"
-require "plugins.configs.lsp.php"
--- require "plugins.configs.lsp.bash"
-require "plugins.configs.lsp.emmet"
-require "plugins.configs.lsp.nix"
+require "plugins.core.lsp.servers.lua"
+require "plugins.core.lsp.servers.javascript"
+require "plugins.core.lsp.servers.java"
+require "plugins.core.lsp.servers.python"
+require "plugins.core.lsp.servers.typst"
+require "plugins.core.lsp.servers.php"
+-- require "plugins.core.lsp.servers.bash"
+require "plugins.core.lsp.servers.emmet"
+require "plugins.core.lsp.servers.nix"
 
 local basic_servers = {
   "zls",

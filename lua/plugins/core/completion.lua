@@ -41,7 +41,7 @@ return {
     -- made opts a function cuz cmp config calls cmp module
     -- and we lazyloaded cmp so we dont want that file to be read on startup!
     opts = function()
-      return require "plugins.configs.cmp"
+      return require "plugins.core.lsp.configs.cmp"
     end,
   },
 }

@@ -13,7 +13,7 @@ return {
     local dashboard = require "alpha.themes.dashboard"
 
     -- Set header
-    local logo_data = require "plugins.configs.alpha_img"
+    local logo_data = require "plugins.ui.statup.pixel_art"
     local logos = {
       -- logo_data.qmi_deptrai,
       logo_data.luffy_nika,
