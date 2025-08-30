@@ -1,30 +1,30 @@
 return {
-  {
-    'feline-nvim/feline.nvim',
-    dependencies = { "catppuccin/nvim" },
-    config = function()
-      local ok, ctp_feline = pcall(require, 'catppuccin.groups.integrations.feline')
-      if ok then
-        ctp_feline.setup()
-        local components = ctp_feline.get_statusline()
-        local navic = require("nvim-navic")
+  -- {
+  --   'feline-nvim/feline.nvim',
+  --   dependencies = { "catppuccin/nvim" },
+  --   config = function()
+  --     local ok, ctp_feline = pcall(require, 'catppuccin.groups.integrations.feline')
+  --     if ok then
+  --       ctp_feline.setup()
+  --       local components = ctp_feline.get_statusline()
+  --       local navic = require("nvim-navic")
 
-        table.insert(components.active[1], {
-          provider = function()
-            return navic.get_location()
-          end,
-          enabled = function()
-            return navic.is_available()
-          end
-        })
-        require("feline").setup({
-          components = components,
-        })
-      else
-        require("feline").setup()
-      end
-    end
-  },
+  --       table.insert(components.active[1], {
+  --         provider = function()
+  --           return navic.get_location()
+  --         end,
+  --         enabled = function()
+  --           return navic.is_available()
+  --         end
+  --       })
+  --       require("feline").setup({
+  --         components = components,
+  --       })
+  --     else
+  --       require("feline").setup()
+  --     end
+  --   end
+  -- },
   -- {
   --   'nanozuki/tabby.nvim',
   --   -- event = 'VimEnter', -- if you want lazy load, see below

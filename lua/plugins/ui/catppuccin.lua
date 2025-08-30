@@ -2,7 +2,7 @@ return {
   {
     "catppuccin/nvim",
     name = "catppuccin",
-    dependencies = { 'feline-nvim/feline.nvim' },
+    dependencies = { 'feline-nvim/feline.nvim', "SmiteshP/nvim-navic", },
     priority = 1000,
     config = function()
       require("catppuccin").setup({
@@ -44,17 +44,30 @@ return {
           fzf = true,
           harpoon = true,
           navic = {
-            enabled = false,
-            custom_bg = "NONE", -- "lualine" will set background to mantle
+            enabled = true,
           },
         },
       })
+      local ctp_feline = require("catppuccin.groups.integrations.feline")
+      ctp_feline.setup()
+      local components = ctp_feline.get_statusline()
+
+      local navic = require("nvim-navic")
+      table.insert(components.active[1], {
+        provider = function()
+          return navic.get_location()
+        end,
+        enabled = function()
+          return navic.is_available()
+        end
+      })
+
+      navic.setup {
+        highlight = true
+      }
+      require("feline").setup({
+        components = components,
+      })
     end,
-  },
-  {
-    "rebelot/kanagawa.nvim",
-  },
-  {
-    "EdenEast/nightfox.nvim",
   },
 }
