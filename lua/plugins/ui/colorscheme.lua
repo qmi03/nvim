@@ -2,64 +2,53 @@ return {
   {
     "catppuccin/nvim",
     name = "catppuccin",
+    dependencies = { 'feline-nvim/feline.nvim' },
     priority = 1000,
     config = function()
-      require("catppuccin").setup {
+      require("catppuccin").setup({
         flavour = "mocha", -- latte, frappe, macchiato, mocha
         background = {     -- :h background
           light = "latte",
           dark = "mocha",
         },
-        transparent_background = true, -- disables setting the background color.
-        show_end_of_buffer = true,     -- shows the '~' characters after the end of buffers
-        term_colors = true,            -- sets terminal colors (e.g. `g:terminal_color_0`)
         dim_inactive = {
-          enabled = false,             -- dims the background color of inactive window
+          enabled = true,          -- dims the background color of inactive window
           shade = "dark",
-          percentage = 0.15,           -- percentage of the shade to apply to the inactive window
+          percentage = 0.15,       -- percentage of the shade to apply to the inactive window
         },
-        no_italic = false,             -- Force no italic
-        no_bold = false,               -- Force no bold
-        no_underline = false,          -- Force no underline
-        styles = {                     -- Handles the styles of general hi groups (see `:h highlight-args`):
-          comments = { "italic" },     -- Change the style of comments
+        styles = {                 -- Handles the styles of general hi groups (see `:h highlight-args`):
+          comments = { "italic" }, -- Change the style of comments
           conditionals = { "italic" },
           loops = {},
-          functions = {},
-          keywords = {},
-          strings = {},
+          functions = { "italic" },
+          keywords = { "bold" },
+          strings = { "italic" },
           variables = {},
-          numbers = {},
-          booleans = {},
+          numbers = { "italic" },
+          booleans = { "italic" },
           properties = {},
           types = {},
-          operators = {},
+          operators = { "bold" },
           -- miscs = {}, -- Uncomment to turn off hard-coded styles
         },
-        color_overrides = {},
-        custom_highlights = function(colors)
-          return {
-            CursorLine = { bg = colors.mantle },
-            ColorColumn = { bg = colors.mantle },
-          }
-        end,
-        default_integrations = true,
         integrations = {
           cmp = true,
+          mason = true,
           gitsigns = true,
-          nvimtree = true,
           treesitter = true,
-          which_key = true,
-          diffview = true,
           notify = true,
-          mini = {
-            enabled = true,
-            indentscope_color = "",
+          colorful_winsep = {
+            enabled = false,
           },
-          noice = true,
-          -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
+          fidget = true,
+          fzf = true,
+          harpoon = true,
+          navic = {
+            enabled = false,
+            custom_bg = "NONE", -- "lualine" will set background to mantle
+          },
         },
-      }
+      })
     end,
   },
   {
@@ -67,5 +56,5 @@ return {
   },
   {
     "EdenEast/nightfox.nvim",
-  }
+  },
 }

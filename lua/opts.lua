@@ -22,6 +22,7 @@ vim.keymap.set("n", "<leader>ww", ":lua vim.wo.wrap = not vim.wo.wrap<CR>")
 -- show vim mode (normal, command, insert,...), only do this if you have
 -- mini statusline plugin installed
 opt.cmdheight = 0
+opt.showtabline = 0
 
 -- textwrap at 80 cols
 -- opt.tw = 80
@@ -120,3 +121,5 @@ vim.diagnostic.config {
 
 opt.mouse = 'a'
 -- terminal esc
+--
+vim.diagnostic.config { update_in_insert = true }
