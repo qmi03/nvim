@@ -16,7 +16,7 @@ return {
         -- See :help oil-columns
         columns = {
           { "icon",       add_padding = true }, -- Icon for the entry (requires nvim-web-devicons)
-          { "permissions" },                  -- Access permissions of the file
+          { "permissions" },                    -- Access permissions of the file
           -- Other available columns (commented out):
           -- { "type" },                 -- Type of the entry (file, directory, link, etc)
           -- { "size" },                 -- Size of the file
@@ -93,13 +93,13 @@ return {
           ["g\\"] = "actions.toggle_trash",
           -- Additional useful keymaps:
           ["gy"] = "actions.yank_entry", -- Yank the filepath to register
-          ["<C-t>"] = {                -- Open in a new tab
+          ["<C-t>"] = {                  -- Open in a new tab
             "actions.select",
             opts = { tab = true }
           },
-          ["<leader>t"] = "actions.open_terminal", -- Open terminal in current directory
+          ["<leader>t"] = "actions.open_terminal",  -- Open terminal in current directory
           ["<leader>q"] = "actions.send_to_qflist", -- Send files to quickfix list
-          ["<C-f>"] = {                           -- Preview scroll down
+          ["<C-f>"] = {                             -- Preview scroll down
             "actions.preview_scroll_down",
             mode = "n",
           },
