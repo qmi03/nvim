@@ -1,13 +1,14 @@
 return {
   {
-    'feline-nvim/feline.nvim',
+    "feline-nvim/feline.nvim",
     dependencies = { "catppuccin/nvim" },
     config = function()
-      local ok, ctp_feline = pcall(require, 'catppuccin.groups.integrations.feline')
+      local ok, ctp_feline =
+        pcall(require, "catppuccin.groups.integrations.feline")
       if ok then
         ctp_feline.setup()
         local components = ctp_feline.get_statusline()
-        local navic = require("nvim-navic")
+        local navic = require "nvim-navic"
 
         table.insert(components.active[1], {
           provider = function()
@@ -15,19 +16,19 @@ return {
           end,
           enabled = function()
             return navic.is_available()
-          end
+          end,
         })
-        require("feline").setup({
+        require("feline").setup {
           components = components,
-        })
+        }
       else
         require("feline").setup()
       end
-    end
+    end,
   },
   {
     "nvim-lualine/lualine.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },  -- optional, for icons
+    dependencies = { "nvim-tree/nvim-web-devicons" }, -- optional, for icons
     config = function()
       require("lualine").setup {
         options = {
@@ -61,7 +62,7 @@ return {
               --         or ""
               --       )
               -- end,
-              require("recorder").recordingStatus
+              require("recorder").recordingStatus,
             },
           },
           lualine_b = { "branch", "diff", "diagnostics" },

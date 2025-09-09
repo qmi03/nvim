@@ -23,14 +23,19 @@ return {
   {
     "NeogitOrg/neogit",
     dependencies = {
-      "nvim-lua/plenary.nvim",  -- required
+      "nvim-lua/plenary.nvim", -- required
       "sindrets/diffview.nvim", -- optional - Diff integration
-      "ibhagwan/fzf-lua",       -- optional
+      "ibhagwan/fzf-lua", -- optional
     },
     config = function()
-      local neogit = require("neogit")
+      local neogit = require "neogit"
 
-      vim.api.nvim_set_keymap("n", "<leader>ng", "<cmd>Neogit cwd=%:p:h<CR>", {})
+      vim.api.nvim_set_keymap(
+        "n",
+        "<leader>ng",
+        "<cmd>Neogit cwd=%:p:h<CR>",
+        {}
+      )
       neogit.setup {
         disable_insert_on_commit = true,
         -- When enabled, will watch the `.git/` directory for changes and refresh the status buffer in response to filesystem
@@ -72,7 +77,7 @@ return {
         },
         commit_view = {
           kind = "vsplit",
-          verify_commit = vim.fn.executable("gpg") == 1, -- Can be set to true or false, otherwise we try to find the binary
+          verify_commit = vim.fn.executable "gpg" == 1, -- Can be set to true or false, otherwise we try to find the binary
         },
         log_view = {
           kind = "tab",
@@ -238,33 +243,33 @@ return {
             ["<c-n>"] = "NextSection",
             ["<c-p>"] = "PreviousSection",
           },
-        }
+        },
       }
       -- Copy staged diff to clipboard
-      vim.keymap.set('n', '<leader>yd', function()
+      vim.keymap.set("n", "<leader>yd", function()
         -- Get the staged diff using git diff --cached
-        local handle = io.popen('git diff --cached')
+        local handle = io.popen "git diff --cached"
         if not handle then
-          vim.notify('Failed to execute git command', vim.log.levels.ERROR)
+          vim.notify("Failed to execute git command", vim.log.levels.ERROR)
           return
         end
 
-        local diff = handle:read('*all')
+        local diff = handle:read "*all"
         handle:close()
 
-        if diff == '' then
-          vim.notify('No staged changes found', vim.log.levels.WARN)
+        if diff == "" then
+          vim.notify("No staged changes found", vim.log.levels.WARN)
           return
         end
 
         -- Copy to system clipboard
-        vim.fn.setreg('+', diff)
+        vim.fn.setreg("+", diff)
 
         -- Also copy to unnamed register as backup
         vim.fn.setreg('"', diff)
 
-        vim.notify('Staged diff copied to clipboard!', vim.log.levels.INFO)
-      end, { desc = 'Copy staged diff to clipboard' })
-    end
+        vim.notify("Staged diff copied to clipboard!", vim.log.levels.INFO)
+      end, { desc = "Copy staged diff to clipboard" })
+    end,
   },
 }

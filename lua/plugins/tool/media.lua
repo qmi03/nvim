@@ -9,5 +9,5 @@ return {
         font = "JetBrainsMonoNL Nerd Font=34;",
       }
     end,
-  }
+  },
 }

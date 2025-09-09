@@ -8,7 +8,7 @@ lspconfig.nil_ls.setup {
   settings = {
     nix = {
       flake = {
-        autoArchive = true,   -- Set to true, false, or null based on your preference
+        autoArchive = true, -- Set to true, false, or null based on your preference
       },
     },
   },

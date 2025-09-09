@@ -27,4 +27,9 @@ null_ls.setup {
     null_ls.builtins.formatting.yamlfmt,
   },
 }
-vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, { desc = "Format current buffer" })
+vim.keymap.set(
+  "n",
+  "<leader>gf",
+  vim.lsp.buf.format,
+  { desc = "Format current buffer" }
+)

@@ -27,15 +27,17 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
+vim.keymap.set("n", "J", function()
+  vim.diagnostic.open_float { focusable = true }
+end, { desc = "Expand an Error into a float" })
+-- Diagnostic keymaps
 vim.keymap.set(
   "n",
-  "J",
-  function() vim.diagnostic.open_float({ focusable = true }) end,
-  { desc = "Expand an Error into a float" }
+  "<leader>q",
+  vim.diagnostic.setloclist,
+  { desc = "Open diagnostic [Q]uickfix list" }
 )
--- Diagnostic keymaps
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 -- Move lines up/down with Alt+j/k
-vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move selection down' })
-vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move selection up' })
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })

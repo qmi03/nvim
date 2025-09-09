@@ -2,21 +2,21 @@ return {
   {
     "catppuccin/nvim",
     name = "catppuccin",
-    dependencies = { 'feline-nvim/feline.nvim', "SmiteshP/nvim-navic", },
+    dependencies = { "feline-nvim/feline.nvim", "SmiteshP/nvim-navic" },
     priority = 1000,
     config = function()
-      require("catppuccin").setup({
+      require("catppuccin").setup {
         flavour = "mocha", -- latte, frappe, macchiato, mocha
-        background = {     -- :h background
+        background = { -- :h background
           light = "latte",
           dark = "mocha",
         },
         dim_inactive = {
-          enabled = true,          -- dims the background color of inactive window
+          enabled = true, -- dims the background color of inactive window
           shade = "dark",
-          percentage = 0.15,       -- percentage of the shade to apply to the inactive window
+          percentage = 0.15, -- percentage of the shade to apply to the inactive window
         },
-        styles = {                 -- Handles the styles of general hi groups (see `:h highlight-args`):
+        styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
           comments = { "italic" }, -- Change the style of comments
           conditionals = { "italic" },
           loops = {},
@@ -47,27 +47,27 @@ return {
             enabled = true,
           },
         },
-      })
-      local ctp_feline = require("catppuccin.groups.integrations.feline")
+      }
+      local ctp_feline = require "catppuccin.groups.integrations.feline"
       ctp_feline.setup()
       local components = ctp_feline.get_statusline()
 
-      local navic = require("nvim-navic")
+      local navic = require "nvim-navic"
       table.insert(components.active[1], {
         provider = function()
           return navic.get_location()
         end,
         enabled = function()
           return navic.is_available()
-        end
+        end,
       })
 
       navic.setup {
-        highlight = true
+        highlight = true,
       }
-      require("feline").setup({
+      require("feline").setup {
         components = components,
-      })
+      }
     end,
   },
 }

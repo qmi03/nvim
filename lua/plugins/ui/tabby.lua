@@ -1,11 +1,11 @@
 return {
-  'nanozuki/tabby.nvim',
+  "nanozuki/tabby.nvim",
   -- event = 'VimEnter', -- if you want lazy load, see below
-  dependencies = 'nvim-tree/nvim-web-devicons',
+  dependencies = "nvim-tree/nvim-web-devicons",
   config = function()
     -- configs...
-    local filename = require("tabby.filename")
-    require("modules.ui.colors")
+    local filename = require "tabby.filename"
+    require "modules.ui.colors"
 
     local cwd = function()
       return "  " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t") .. " "
@@ -66,6 +66,6 @@ return {
       },
     }
 
-    require("tabby").setup({ tabline = line })
+    require("tabby").setup { tabline = line }
   end,
 }

@@ -7,7 +7,6 @@ vim.g.background = "dark"
 opt.relativenumber = true
 opt.number = true
 
-
 -- tabs & indentation
 opt.tabstop = 2
 opt.shiftwidth = 2
@@ -38,10 +37,10 @@ opt.smartcase = true
 -- highlight current line
 opt.cursorline = true
 vim.o.guicursor = table.concat({
-  "n-v-c:block-Cursor/lCursor",                                -- No blink for normal, visual, and command modes
+  "n-v-c:block-Cursor/lCursor", -- No blink for normal, visual, and command modes
   "i-ci-ve:block/lCursor-blinkwait500-blinkoff500-blinkon500", -- Blink in insert modes
-  "r-cr:hor20-Cursor/lCursor",                                 -- No blink for replace modes
-  "o:hor50-Cursor/lCursor",                                    -- No blink for operator-pending mode
+  "r-cr:hor20-Cursor/lCursor", -- No blink for replace modes
+  "o:hor50-Cursor/lCursor", -- No blink for operator-pending mode
 }, ",")
 
 -- appearance
@@ -94,18 +93,18 @@ opt.sidescrolloff = 16
 
 vim.diagnostic.config {
   severity_sort = true,
-  float = { border = 'rounded', source = 'if_many' },
+  float = { border = "rounded", source = "if_many" },
   underline = { severity = vim.diagnostic.severity.ERROR },
   signs = vim.g.have_nerd_font and {
     text = {
-      [vim.diagnostic.severity.ERROR] = '󰅚 ',
-      [vim.diagnostic.severity.WARN] = '󰀪 ',
-      [vim.diagnostic.severity.INFO] = '󰋽 ',
-      [vim.diagnostic.severity.HINT] = '󰌶 ',
+      [vim.diagnostic.severity.ERROR] = "󰅚 ",
+      [vim.diagnostic.severity.WARN] = "󰀪 ",
+      [vim.diagnostic.severity.INFO] = "󰋽 ",
+      [vim.diagnostic.severity.HINT] = "󰌶 ",
     },
   } or {},
   virtual_text = {
-    source = 'if_many',
+    source = "if_many",
     spacing = 2,
     format = function(diagnostic)
       local diagnostic_message = {
@@ -119,7 +118,7 @@ vim.diagnostic.config {
   },
 }
 
-opt.mouse = 'a'
+opt.mouse = "a"
 -- terminal esc
 --
 vim.diagnostic.config { update_in_insert = true }

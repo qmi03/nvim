@@ -36,7 +36,8 @@ return {
 
     -- Dynamic header padding
     local height = vim.o.lines - vim.o.cmdheight
-    local header_padding = math.floor((height - #dashboard.section.header.val) / 4)
+    local header_padding =
+      math.floor((height - #dashboard.section.header.val) / 4)
     dashboard.section.header.opts.margin = header_padding
 
     -- Set menu
@@ -59,7 +60,12 @@ return {
     -- Set footer
     local function get_nvim_version()
       local version = vim.version()
-      return string.format("Neovim v%d.%d.%d", version.major, version.minor, version.patch)
+      return string.format(
+        "Neovim v%d.%d.%d",
+        version.major,
+        version.minor,
+        version.patch
+      )
     end
 
     dashboard.section.footer.val = get_nvim_version()

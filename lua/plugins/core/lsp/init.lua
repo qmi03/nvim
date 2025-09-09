@@ -7,7 +7,7 @@ return {
     end,
   },
   {
-    'nvim-lua/lsp-status.nvim',
+    "nvim-lua/lsp-status.nvim",
   },
   {
     "williamboman/mason.nvim",
@@ -16,5 +16,5 @@ return {
       require("mason").setup()
     end,
   },
-  require "plugins.core.lsp.formatting"
+  require "plugins.core.lsp.formatting",
 }

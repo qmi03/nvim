@@ -99,10 +99,10 @@ local function generate_pallet_from_colorscheme()
     pallet[name] = get_highlight(value.hl).fg or value.default
   end
 
-  pallet.sl = get_highlight("StatusLine")
-  pallet.tab = get_highlight("TabLine")
-  pallet.sel = get_highlight("TabLineSel")
-  pallet.fill = get_highlight("TabLineFill")
+  pallet.sl = get_highlight "StatusLine"
+  pallet.tab = get_highlight "TabLine"
+  pallet.sel = get_highlight "TabLineSel"
+  pallet.fill = get_highlight "TabLineFill"
 
   return pallet
 end
@@ -128,7 +128,9 @@ function M.generate_user_config_highlights()
     colors["EdenRv" .. name] = { fg = value.bg, bg = value.fg, style = "bold" }
   end
 
-  local status = vim.o.background == "dark" and { fg = pal.black, bg = pal.white } or { fg = pal.white, bg = pal.black }
+  local status = vim.o.background == "dark"
+      and { fg = pal.black, bg = pal.white }
+    or { fg = pal.white, bg = pal.black }
 
   local groups = {
     EdenSLHint = { fg = pal.sl.bg, bg = pal.hint, style = "bold" },
@@ -161,6 +163,5 @@ function M.generate_user_config_highlights()
 end
 
 M.generate_user_config_highlights()
-
 
 return M

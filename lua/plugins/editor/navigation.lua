@@ -7,7 +7,12 @@ return {
     -- Optional dependencies
     dependencies = { { "echasnovski/mini.icons", opts = {} } },
     config = function()
-      vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+      vim.keymap.set(
+        "n",
+        "-",
+        "<CMD>Oil<CR>",
+        { desc = "Open parent directory" }
+      )
       require("oil").setup {
         -- Oil will take over directory buffers (e.g. `vim .` or `:e src/`)
         -- Set to false if you want some other plugin (e.g. netrw) to open when you edit directories.
@@ -15,8 +20,8 @@ return {
         -- Id is automatically added at the beginning, and name at the end
         -- See :help oil-columns
         columns = {
-          { "icon",       add_padding = true }, -- Icon for the entry (requires nvim-web-devicons)
-          { "permissions" },                    -- Access permissions of the file
+          { "icon", add_padding = true }, -- Icon for the entry (requires nvim-web-devicons)
+          { "permissions" }, -- Access permissions of the file
           -- Other available columns (commented out):
           -- { "type" },                 -- Type of the entry (file, directory, link, etc)
           -- { "size" },                 -- Size of the file
@@ -93,13 +98,13 @@ return {
           ["g\\"] = "actions.toggle_trash",
           -- Additional useful keymaps:
           ["gy"] = "actions.yank_entry", -- Yank the filepath to register
-          ["<C-t>"] = {                  -- Open in a new tab
+          ["<C-t>"] = { -- Open in a new tab
             "actions.select",
-            opts = { tab = true }
+            opts = { tab = true },
           },
-          ["<leader>t"] = "actions.open_terminal",  -- Open terminal in current directory
+          ["<leader>t"] = "actions.open_terminal", -- Open terminal in current directory
           ["<leader>q"] = "actions.send_to_qflist", -- Send files to quickfix list
-          ["<C-f>"] = {                             -- Preview scroll down
+          ["<C-f>"] = { -- Preview scroll down
             "actions.preview_scroll_down",
             mode = "n",
           },
@@ -112,7 +117,6 @@ return {
           ["<c-k>"] = "<cmd>TmuxNavigateUp<cr>",
           ["<c-l>"] = "<cmd>TmuxNavigateRight<cr>",
           ["<c-\\>"] = "<cmd>TmuxNavigatePrevious<cr>",
-
         },
         -- Set to false to disable all of the above keymaps
         use_default_keymaps = false,
@@ -125,8 +129,7 @@ return {
           end,
           -- This function defines what will never be shown, even when `show_hidden` is set
           is_always_hidden = function(name, bufnr)
-            local always_hidden = {
-            }
+            local always_hidden = {}
             for _, hidden_name in ipairs(always_hidden) do
               if name == hidden_name then
                 return true
@@ -140,10 +143,10 @@ return {
           -- Sort file and directory names case insensitive
           case_insensitive = false,
           sort = {
-            { "type",  "asc" },
-            { "name",  "asc" },
+            { "type", "asc" },
+            { "name", "asc" },
             { "mtime", "desc" }, -- Show newest files first
-          }
+          },
         },
         -- Extra arguments to pass to SCP when moving/copying files over SSH
         extra_scp_args = {},
@@ -247,5 +250,5 @@ return {
         harpoon.ui:toggle_quick_menu(harpoon:list())
       end)
     end,
-  }
+  },
 }
