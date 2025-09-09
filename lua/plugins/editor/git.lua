@@ -46,7 +46,7 @@ return {
         -- Show message with spinning animation when a git command is running.
         process_spinner = true,
         -- Change the default way of opening neogit
-        kind = "replace",
+        kind = "tab",
         -- Floating window style
         floating = {
           relative = "editor",
