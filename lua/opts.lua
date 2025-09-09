@@ -51,9 +51,9 @@ opt.signcolumn = "number"
 opt.backspace = "indent,eol,start"
 
 -- clipboard sync with OS clipboard
-vim.schedule(function()
-  opt.clipboard:append "unnamedplus"
-end)
+-- vim.schedule(function()
+--   opt.clipboard:append "unnamedplus"
+-- end)
 
 -- split windows
 opt.splitright = true
