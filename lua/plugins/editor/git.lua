@@ -41,7 +41,7 @@ return {
         -- When enabled, will watch the `.git/` directory for changes and refresh the status buffer in response to filesystem
         -- events.
         filewatcher = {
-          interval = 100,
+          interval = 50,
           enabled = true,
         },
         -- "ascii"   is the graph the git CLI generates
@@ -130,7 +130,7 @@ return {
         mappings = {
           commit_editor = {
             ["q"] = "Close",
-            ["c"] = "Submit",
+            ["<c-c>c"] = "Submit",
             ["<c-c><c-c>"] = "Abort",
             ["<m-p>"] = "PrevMessage",
             ["<m-n>"] = "NextMessage",
