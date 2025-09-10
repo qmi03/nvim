@@ -23,19 +23,20 @@ return {
   {
     "NeogitOrg/neogit",
     dependencies = {
-      "nvim-lua/plenary.nvim", -- required
+      "nvim-lua/plenary.nvim",  -- required
       "sindrets/diffview.nvim", -- optional - Diff integration
-      "ibhagwan/fzf-lua", -- optional
+      "ibhagwan/fzf-lua",       -- optional
     },
     config = function()
       local neogit = require "neogit"
 
-      vim.api.nvim_set_keymap(
-        "n",
-        "<leader>ng",
-        "<cmd>Neogit cwd=%:p:h<CR>",
-        {}
-      )
+      vim.keymap.set("n", "<leader>ng", function()
+        if vim.bo.filetype == "oil" or not vim.bo.modifiable then
+          vim.cmd("Neogit")
+        else
+          vim.cmd("Neogit cwd=%:p:h")
+        end
+      end, { desc = "Open Neogit contextually" })
       neogit.setup {
         disable_insert_on_commit = true,
         -- When enabled, will watch the `.git/` directory for changes and refresh the status buffer in response to filesystem
