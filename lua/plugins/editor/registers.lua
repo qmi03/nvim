@@ -46,9 +46,9 @@ return {
         -- temporarily changes changes some settings for the duration of the macro.
         performanceOpts = {
           countThreshold = 100,
-          lazyredraw = true, -- enable lazyredraw (see `:h lazyredraw`)
+          lazyredraw = true,        -- enable lazyredraw (see `:h lazyredraw`)
           noSystemClipboard = true, -- remove `+`/`*` from clipboard option
-          autocmdEventsIgnore = { -- temporarily ignore these autocmd events
+          autocmdEventsIgnore = {   -- temporarily ignore these autocmd events
             "TextChangedI",
             "TextChanged",
             "InsertLeave",
