@@ -44,6 +44,7 @@ return {
     dashboard.section.buttons.val = {
       dashboard.button("f", "󰱼  > Find file", ":Telescope find_files<CR>"),
       dashboard.button("g", "󰱼  > Find grep", ":Telescope live_grep<CR>"),
+      dashboard.button("l", "  > Lazy", ":Lazy<CR>"),
       dashboard.button(
         "r",
         "  > Recent",
