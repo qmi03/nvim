@@ -1,29 +1,26 @@
 local my_utils = require "plugins.core.lsp.servers.utils"
 local on_attach, capabilities = my_utils.on_attach, my_utils.capabilities
-local lspconfig = require "lspconfig"
 
-local active_lsp = "phpactor" -- Change this to "phpactor" to use phpactor instead
+local active_lsp = "phpactor" -- change to "intelephense" if needed
 
--- Simple function to get the path of a binary using vim's system call
+-- get binary path via system call
 local get_binary_path = function(name)
   local handle = io.popen("which " .. name)
   if handle then
-    local result = handle:read "*l"
+    local result = handle:read("*l")
     handle:close()
     return result
   end
   return name
 end
 
--- Define LSP configurations in a table
+-- configs
 local lsp_configs = {
   phpactor = function()
-    lspconfig.phpactor.setup {
+    vim.lsp.config("phpactor", {
       capabilities = capabilities,
       on_attach = on_attach,
       init_options = {
-        -- ["language_server_phpstan.enabled"] = false,
-        -- ["language_server_psalm.enabled"] = false,
         ["language_server_php_cs_fixer.enabled"] = true,
         ["language_server_php_cs_fixer.bin"] = get_binary_path "php-cs-fixer",
         ["language_server_php_cs_fixer.config"] = ".php-cs-fixer.dist.php",
@@ -34,10 +31,12 @@ local lsp_configs = {
           "worse.undefined_variable",
         },
       },
-    }
+    })
+    vim.lsp.enable("phpactor")
   end,
+
   intelephense = function()
-    lspconfig.intelephense.setup {
+    vim.lsp.config("intelephense", {
       capabilities = capabilities,
       on_attach = on_attach,
       settings = {
@@ -51,68 +50,30 @@ local lsp_configs = {
             includePaths = { "." },
           },
           stubs = {
-            "apache",
-            "bcmath",
-            "bz2",
-            "calendar",
-            "Core",
-            "curl",
-            "date",
-            "dba",
-            "dom",
-            "fileinfo",
-            "filter",
-            "ftp",
-            "gd",
-            "gettext",
-            "hash",
-            "iconv",
-            "imap",
-            "intl",
-            "json",
-            "ldap",
-            "libxml",
-            "mbstring",
-            "mysqli",
-            "mysqlnd",
-            "oci8",
-            "openssl",
-            "pcntl",
-            "pcre",
-            "PDO",
-            "pdo_mysql",
-            "Phar",
-            "readline",
-            "Reflection",
-            "session",
-            "SimpleXML",
-            "soap",
-            "sockets",
-            "sodium",
-            "SPL",
-            "standard",
-            "superglobals",
-            "tokenizer",
-            "xml",
-            "xmlreader",
-            "xmlrpc",
-            "xmlwriter",
-            "zip",
-            "zlib",
+            "apache", "bcmath", "bz2", "calendar", "Core", "curl",
+            "date", "dba", "dom", "fileinfo", "filter", "ftp", "gd",
+            "gettext", "hash", "iconv", "imap", "intl", "json", "ldap",
+            "libxml", "mbstring", "mysqli", "mysqlnd", "oci8",
+            "openssl", "pcntl", "pcre", "PDO", "pdo_mysql", "Phar",
+            "readline", "Reflection", "session", "SimpleXML", "soap",
+            "sockets", "sodium", "SPL", "standard", "superglobals",
+            "tokenizer", "xml", "xmlreader", "xmlrpc", "xmlwriter",
+            "zip", "zlib",
           },
         },
       },
-    }
+    })
+    vim.lsp.enable("intelephense")
   end,
 }
 
--- Set up the chosen LSP
+-- activate chosen LSP
 if lsp_configs[active_lsp] then
   lsp_configs[active_lsp]()
 else
   print(
     "Invalid LSP selection: "
-      .. active_lsp
-      .. ". Available options: phpactor, intelephense"
+    .. active_lsp
+    .. ". Available: phpactor, intelephense"
   )
 end

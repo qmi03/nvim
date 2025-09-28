@@ -1,7 +1,7 @@
 local my_utils = require "plugins.core.lsp.servers.utils"
 local on_attach, capabilities = my_utils.on_attach, my_utils.capabilities
-local lspconfig = require "lspconfig"
-lspconfig.emmet_language_server.setup {
+
+vim.lsp.config("emmet_language_server", {
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = {
@@ -17,26 +17,35 @@ lspconfig.emmet_language_server.setup {
     "typescriptreact",
     "php",
   },
-  -- Read more about this options in the [vscode docs](https://code.visualstudio.com/docs/editor/emmet#_emmet-configuration).
-  -- **Note:** only the options listed in the table are supported.
   init_options = {
-    ---@type table<string, string>
     includeLanguages = {},
-    --- @type string[]
     excludeLanguages = {},
-    --- @type string[]
     extensionsPath = {},
-    --- @type table<string, any> [Emmet Docs](https://docs.emmet.io/customization/preferences/)
     preferences = {},
-    --- @type boolean Defaults to `true`
     showAbbreviationSuggestions = true,
-    --- @type "always" | "never" Defaults to `"always"`
     showExpandedAbbreviation = "always",
-    --- @type boolean Defaults to `false`
     showSuggestionsAsSnippets = false,
-    --- @type table<string, any> [Emmet Docs](https://docs.emmet.io/customization/syntax-profiles/)
     syntaxProfiles = {},
-    --- @type table<string, string> [Emmet Docs](https://docs.emmet.io/customization/snippets/#variables)
     variables = {},
   },
-}
+})
+
+-- enable lazily when opening supported filetypes
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = {
+    "css",
+    "eruby",
+    "html",
+    "javascript",
+    "javascriptreact",
+    "less",
+    "sass",
+    "scss",
+    "pug",
+    "typescriptreact",
+    "php",
+  },
+  callback = function()
+    vim.lsp.enable("emmet_language_server")
+  end,
+})

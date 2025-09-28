@@ -1,10 +1,10 @@
 local my_utils = require "plugins.core.lsp.servers.utils"
 local on_attach, capabilities = my_utils.on_attach, my_utils.capabilities
-local lspconfig = require "lspconfig"
-lspconfig.jdtls.setup {
+vim.lsp.config('jdtls', {
   on_attach = on_attach,
   capabilities = capabilities,
-}
+})
+vim.lsp.enable('jdtls')
 
 -- local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 -- local config = {
