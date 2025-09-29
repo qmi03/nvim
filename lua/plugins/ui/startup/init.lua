@@ -42,14 +42,13 @@ return {
 
     -- Set menu
     dashboard.section.buttons.val = {
-      dashboard.button("f", "󰱼  > Find file", ":Telescope find_files<CR>"),
-      dashboard.button("g", "󰱼  > Find grep", ":Telescope live_grep<CR>"),
-      dashboard.button("l", "  > Lazy", ":Lazy<CR>"),
       dashboard.button(
         "r",
         "  > Recent",
         ":lua require('telescope.builtin').oldfiles({only_cwd = true})<CR>"
       ),
+      dashboard.button("f", "󰱼  > Find grep", ":Telescope live_grep<CR>"),
+      dashboard.button("g", "  > Git", ":Neogit<CR>"),
       dashboard.button(
         "s",
         "  > Settings",
