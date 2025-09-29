@@ -48,7 +48,7 @@ return {
           },
         },
       }
-      local ctp_feline = require "catppuccin.groups.integrations.feline"
+      local ctp_feline = require "catppuccin.special.feline"
       ctp_feline.setup()
       local components = ctp_feline.get_statusline()
 
