@@ -1,10 +1,4 @@
 require "opts"
-require "keymaps"
-
-if vim.fn.has "nvim" == 1 and vim.fn.executable "nvr" == 1 then
-  vim.env.GIT_EDITOR = "nvr -cc split --remote-wait +'set bufhidden=wipe'"
-end
-vim.g.lazygit_use_neovim_remote = 1
 
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -32,6 +26,7 @@ require("lazy").setup {
   },
 }
 
--- setup colorscheme after setting up lazy
+-- setup these after lazy have installed the plugins
+require "keymaps"
 require "colorscheme"
 require "lsp"
