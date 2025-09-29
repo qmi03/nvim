@@ -3,7 +3,7 @@ return {
   config = function()
     -- Create autogroup for changing listchars based on filetype
     local cyclist_group =
-        vim.api.nvim_create_augroup("ChangeListChars", { clear = true })
+      vim.api.nvim_create_augroup("ChangeListChars", { clear = true })
     vim.api.nvim_create_autocmd("FileType", {
       group = cyclist_group,
       pattern = "c",

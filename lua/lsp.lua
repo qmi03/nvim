@@ -7,13 +7,15 @@ local on_attach = function(client, bufnr)
   end
   client.server_capabilities.document_formatting = true
   local navic = require "nvim-navic"
-  if client.server_capabilities.documentSymbolProvider and client.name ~= "null-ls" then
+  if
+    client.server_capabilities.documentSymbolProvider
+    and client.name ~= "null-ls"
+  then
     navic.attach(client, bufnr)
   end
 end
 
-
-vim.lsp.config('*', {
+vim.lsp.config("*", {
   capabilities = capabilities,
   on_attach = on_attach,
 })
@@ -69,5 +71,5 @@ vim.g.markdown_fenced_languages = {
   "ts=typescript",
   "js=javascript",
   "py=python",
-  "sh=bash"
+  "sh=bash",
 }

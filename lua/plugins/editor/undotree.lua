@@ -1,5 +1,4 @@
-return
-{
+return {
   "jiaoshijie/undotree",
   dependencies = { "nvim-lua/plenary.nvim" },
   ---@module 'undotree.collector'

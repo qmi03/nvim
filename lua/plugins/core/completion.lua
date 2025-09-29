@@ -23,27 +23,23 @@ return {
         "L3MON4D3/LuaSnip",
         config = function()
           require("luasnip.loaders.from_vscode").lazy_load()
-          local ls = require("luasnip")
+          local ls = require "luasnip"
           vim.keymap.set({ "i", "s" }, "<M-p>", function()
-              if ls.expand_or_jumpable() then
-                ls.expand_or_jump()
-              end
-            end,
-            {
-              silent = true,
-              desc = "Jump snippet forward"
-            }
-          )
+            if ls.expand_or_jumpable() then
+              ls.expand_or_jump()
+            end
+          end, {
+            silent = true,
+            desc = "Jump snippet forward",
+          })
           vim.keymap.set({ "i", "s" }, "<M-n>", function()
-              if ls.expand_or_jumpable(-1) then
-                ls.expand_or_jump(-1)
-              end
-            end,
-            {
-              silent = true,
-              desc = "Jump snippet backwards",
-            }
-          )
+            if ls.expand_or_jumpable(-1) then
+              ls.expand_or_jump(-1)
+            end
+          end, {
+            silent = true,
+            desc = "Jump snippet backwards",
+          })
         end,
       },
 

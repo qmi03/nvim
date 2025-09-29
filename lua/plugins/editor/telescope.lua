@@ -70,7 +70,7 @@ return {
             builtin.lsp_workspace_symbols()
           end,
           desc = "Get workspace symbols",
-        }
+        },
       }
 
       for key, mapping in pairs(keymaps) do
@@ -112,9 +112,9 @@ return {
                 after_action = function(selection)
                   print(
                     "Changed to: ("
-                    .. selection.z_score
-                    .. ") "
-                    .. selection.path
+                      .. selection.z_score
+                      .. ") "
+                      .. selection.path
                   )
                 end,
               },

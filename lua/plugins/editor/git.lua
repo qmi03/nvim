@@ -23,18 +23,18 @@ return {
   {
     "NeogitOrg/neogit",
     dependencies = {
-      "nvim-lua/plenary.nvim",  -- required
+      "nvim-lua/plenary.nvim", -- required
       "sindrets/diffview.nvim", -- optional - Diff integration
-      "ibhagwan/fzf-lua",       -- optional
+      "ibhagwan/fzf-lua", -- optional
     },
     config = function()
       local neogit = require "neogit"
 
       vim.keymap.set("n", "<leader>ng", function()
         if vim.bo.filetype == "oil" or not vim.bo.modifiable then
-          vim.cmd("Neogit")
+          vim.cmd "Neogit"
         else
-          vim.cmd("Neogit cwd=%:p:h")
+          vim.cmd "Neogit cwd=%:p:h"
         end
       end, { desc = "Open Neogit contextually" })
       neogit.setup {

@@ -2,7 +2,7 @@
 local get_binary_path = function(name)
   local handle = io.popen("which " .. name)
   if handle then
-    local result = handle:read("*l")
+    local result = handle:read "*l"
     handle:close()
     return result
   end

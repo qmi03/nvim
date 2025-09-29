@@ -4,8 +4,8 @@ return {
     "narutoxy/silicon.lua",
     requires = { "nvim-lua/plenary.nvim" },
     config = function()
-      local silicon = require 'silicon'
-      silicon.setup({
+      local silicon = require "silicon"
+      silicon.setup {
         theme = "auto",
         -- auto generate file name based on time (absolute or relative to cwd)
         output = "SILICON_${year}-${month}-${date}_${time}.png",
@@ -15,24 +15,32 @@ return {
         lineNumber = true,
         font = "monospace",
         lineOffset = 1, -- from where to start line number
-        linePad = 2,    -- padding between lines
-        padHoriz = 80,  -- Horizontal padding
-        padVert = 100,  -- vertical padding
+        linePad = 2, -- padding between lines
+        padHoriz = 80, -- Horizontal padding
+        padVert = 100, -- vertical padding
         shadowBlurRadius = 10,
         shadowColor = "#555555",
         shadowOffsetX = 8,
         shadowOffsetY = 8,
         gobble = false, -- enable lsautogobble like feature
-        debug = false,  -- enable debug output
-      })
+        debug = false, -- enable debug output
+      }
       -- Generate image of lines in a visual selection
-      vim.keymap.set('v', '<Leader>s', function() silicon.visualise_api({}) end)
+      vim.keymap.set("v", "<Leader>s", function()
+        silicon.visualise_api {}
+      end)
       -- Generate image of a whole buffer, with lines in a visual selection highlighted
-      vim.keymap.set('v', '<Leader>bs', function() silicon.visualise_api({ to_clip = true, show_buf = true }) end)
+      vim.keymap.set("v", "<Leader>bs", function()
+        silicon.visualise_api { to_clip = true, show_buf = true }
+      end)
       -- Generate visible portion of a buffer
-      vim.keymap.set('n', '<Leader>s', function() silicon.visualise_api({ to_clip = true, visible = true }) end)
+      vim.keymap.set("n", "<Leader>s", function()
+        silicon.visualise_api { to_clip = true, visible = true }
+      end)
       -- Generate current buffer line in normal mode
-      vim.keymap.set('n', '<Leader>s', function() silicon.visualise_api({ to_clip = true }) end)
-    end
+      vim.keymap.set("n", "<Leader>s", function()
+        silicon.visualise_api { to_clip = true }
+      end)
+    end,
   },
 }
