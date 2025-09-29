@@ -34,3 +34,4 @@ require("lazy").setup {
 
 -- setup colorscheme after setting up lazy
 require "colorscheme"
+require "lsp"
