@@ -14,13 +14,14 @@ return {
       "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-cmdline",
       "petertriho/cmp-git",
-
-      --list of default snippets
-      "rafamadriz/friendly-snippets",
-
+      -- format
+      "onsails/lspkind.nvim",
       -- snippets engine
       {
         "L3MON4D3/LuaSnip",
+        dependencies = {
+          "rafamadriz/friendly-snippets",
+        },
         config = function()
           require("luasnip.loaders.from_vscode").lazy_load()
           local ls = require "luasnip"
@@ -42,7 +43,6 @@ return {
           })
         end,
       },
-
       -- autopairs , autocompletes ()[] etc
       {
         "windwp/nvim-autopairs",
@@ -58,7 +58,7 @@ return {
     -- made opts a function cuz cmp config calls cmp module
     -- and we lazyloaded cmp so we dont want that file to be read on startup!
     opts = function()
-      return require "plugins.core.lsp.configs.cmp"
+      return require "plugins.core.configs.cmp"
     end,
   },
 }

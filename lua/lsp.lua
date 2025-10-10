@@ -8,8 +8,8 @@ local on_attach = function(client, bufnr)
   client.server_capabilities.document_formatting = true
   local navic = require "nvim-navic"
   if
-    client.server_capabilities.documentSymbolProvider
-    and client.name ~= "null-ls"
+      client.server_capabilities.documentSymbolProvider
+      and client.name ~= "null-ls"
   then
     navic.attach(client, bufnr)
   end
@@ -21,14 +21,13 @@ vim.lsp.config("*", {
 })
 
 local servers = {
+  "astro",
+
   "clangd",
   "cmake",
 
-  "denols",
   "dockerls",
   "docker_compose_language_service",
-
-  "emmet_language_server",
 
   "gleam",
   "gopls",
@@ -39,6 +38,7 @@ local servers = {
   "lua_ls",
 
   "marksman",
+  "mdx",
 
   "nil_ls",
 
@@ -72,4 +72,35 @@ vim.g.markdown_fenced_languages = {
   "js=javascript",
   "py=python",
   "sh=bash",
+}
+
+local null_ls = require "null-ls"
+null_ls.setup {
+  sources = {
+    -- js
+    -- require("none-ls.diagnostics.eslint_d"),
+    null_ls.builtins.formatting.prettierd,
+
+    -- ruby
+    null_ls.builtins.formatting.rubocop,
+    null_ls.builtins.diagnostics.rubocop,
+
+    -- nix format
+    null_ls.builtins.formatting.nixpkgs_fmt,
+
+    -- swift and c
+    -- null_ls.builtins.formatting.clang_format,
+    null_ls.builtins.formatting.swiftformat,
+    -- null_ls.builtins.diagnostics.swiftlint,
+    -- null_ls.builtins.diagnostics.checkmake,
+
+    -- markdown
+    null_ls.builtins.formatting.markdownlint,
+
+    -- python
+    null_ls.builtins.formatting.isort,
+
+    -- yaml
+    null_ls.builtins.formatting.yamlfmt,
+  },
 }

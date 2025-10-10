@@ -9,13 +9,4 @@ return {
       languages = { "vue" },
     },
   },
-  filetypes = {
-    "typescript",
-    "javascript",
-    "javascriptreact",
-    "typescriptreact",
-    "vue",
-  },
-  root_markers = { "package.json" },
-  single_file_support = false,
 }
