@@ -25,13 +25,20 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
+vim.keymap.set(
+  "n",
+  "gf",
+  vim.lsp.buf.format,
+  { desc = "Format current buffer" }
+)
+
 vim.keymap.set("n", "J", function()
-  vim.diagnostic.open_float { focusable = true }
+  vim.diagnostic.open_float()
 end, { desc = "Expand an Error into a float" })
 -- Diagnostic keymaps
 vim.keymap.set(
   "n",
-  "<leader>q",
+  "<leader>qf",
   vim.diagnostic.setloclist,
   { desc = "Open diagnostic [Q]uickfix list" }
 )

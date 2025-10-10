@@ -247,7 +247,7 @@ return {
         },
       }
       -- Copy staged diff to clipboard
-      vim.keymap.set("n", "<leader>yd", function()
+      vim.keymap.set("n", "yd", function()
         -- Get the staged diff using git diff --cached
         local handle = io.popen "git diff --cached"
         if not handle then
