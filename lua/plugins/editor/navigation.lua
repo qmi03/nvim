@@ -249,6 +249,9 @@ return {
       vim.keymap.set("n", "<C-e>", function()
         harpoon.ui:toggle_quick_menu(harpoon:list())
       end)
+      vim.api.nvim_create_user_command("HarpoonToggleQuickMenu", function()
+        harpoon.ui:toggle_quick_menu(harpoon:list())
+      end, {})
     end,
   },
 }

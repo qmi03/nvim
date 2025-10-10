@@ -7,6 +7,11 @@ return {
     "stevearc/oil.nvim",
     "nvim-telescope/telescope.nvim",
     "nvim-telescope/telescope-media-files.nvim",
+    {
+      "ThePrimeagen/harpoon",
+      branch = "harpoon2",
+      requires = { { "nvim-lua/plenary.nvim" } },
+    },
   },
   config = function()
     local alpha = require "alpha"
@@ -42,19 +47,25 @@ return {
 
     -- Set menu
     dashboard.section.buttons.val = {
-      dashboard.button(
-        "r",
-        "  > Recent",
-        ":lua require('telescope.builtin').oldfiles({only_cwd = true})<CR>"
-      ),
-      dashboard.button("f", "󰱼  > Find grep", ":Telescope live_grep<CR>"),
-      dashboard.button("g", "  > Git", ":Neogit<CR>"),
-      dashboard.button(
-        "s",
-        "  > Settings",
-        ":e $MYVIMRC | :cd %:p:h | Oil<CR>"
-      ),
-      dashboard.button("q", "  > Quit NVIM", ":qa<CR>"),
+      dashboard.button("r", "⏳ > Recent", function()
+        require("telescope.builtin").oldfiles { only_cwd = true }
+      end),
+      dashboard.button("f", "📄 > Find files", function()
+        require("telescope.builtin").find_files { only_cwd = true }
+      end),
+      dashboard.button("/", "🔍 > Find grep", function()
+        require("telescope.builtin").live_grep()
+      end),
+      dashboard.button("t", "🔭 > Telescope", function()
+        require("telescope.builtin").builtin()
+      end),
+      dashboard.button("g", "  > Git", function()
+        vim.cmd "Neogit"
+      end),
+      dashboard.button("h", "🔱 > Harpoon", function()
+        local harpoon = require "harpoon"
+        harpoon.ui:toggle_quick_menu(harpoon:list())
+      end),
     }
 
     -- Set footer

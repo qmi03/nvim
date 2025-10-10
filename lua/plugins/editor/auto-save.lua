@@ -16,6 +16,7 @@ return {
       -- return false: if it's not ok to be saved
       condition = function(buf)
         local excluded_filetypes = {
+          "harpoon",
           "oil",
           "alpha",
           "NvimTree",
