@@ -18,24 +18,25 @@ return {
     local dashboard = require "alpha.themes.dashboard"
 
     -- Set header
-    local logo_data = require "plugins.ui.startup.pixel_art"
-    local logos = {
-      -- logo_data.qmi_deptrai,
-      logo_data.luffy_nika,
-      logo_data.luffy_small,
-      logo_data.one_piece_1,
-      logo_data.one_piece_2,
+    local logos = require "plugins.ui.startup.pixel_art"
+    local fortune = require "alpha.fortune" ()
+    local headers = {
+      logos.luffy_nika,
+      logos.luffy_small,
+      logos.one_piece_1,
+      logos.one_piece_2,
+      table.concat(fortune, "\n")
     }
 
     math.randomseed(vim.loop.hrtime())
-    local logo = logos[math.random(#logos)]
+    local header = headers[math.random(#headers)]
 
     local function pick_color()
       local colors = { "String", "Identifier", "Keyword", "Number" }
       return colors[math.random(#colors)]
     end
 
-    dashboard.section.header.val = vim.split(logo, "\n")
+    dashboard.section.header.val = vim.split(header, "\n")
     dashboard.section.header.opts.hl = pick_color()
     dashboard.section.header.opts.position = "center"
 
