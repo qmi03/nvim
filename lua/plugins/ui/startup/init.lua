@@ -91,7 +91,7 @@ return {
     dashboard.section.footer.opts.hl = "Comment"
 
     -- Send config to alpha
-    alpha.setup(dashboard.opts)
+    alpha.setup(dashboard.config)
 
     -- Disable folding on alpha buffer and add keymaps
     vim.cmd [[
