@@ -1,5 +1,5 @@
 return {
-  "goolord/alpha-nvim",
+  "qmi03/alpha-nvim",
   lazy = true,
   event = "VimEnter",
   dependencies = {
@@ -96,8 +96,7 @@ return {
     -- Disable folding on alpha buffer and add keymaps
     vim.cmd [[
       autocmd FileType alpha setlocal nofoldenable
-      autocmd FileType alpha nnoremap <buffer> <cr> <cmd>lua require('alpha.themes.dashboard').buttons.eval()<cr>
-      autocmd FileType alpha nnoremap <buffer> q :qa<cr>
+      autocmd FileType alpha nnoremap <buffer> q <cmd>qa<cr>
     ]]
   end,
 }
