@@ -48,24 +48,24 @@ return {
 
     -- Set menu
     dashboard.section.buttons.val = {
-      dashboard.button("r", "⏳ > Recent", function()
+      dashboard.button("r", "󰔟 > Recent", function()
         require("telescope.builtin").oldfiles { only_cwd = true }
       end),
-      dashboard.button("e", "📄 > Empty buffer", function()
+      dashboard.button("e", " > Empty buffer", function()
         vim.cmd("enew")
         vim.bo.buftype = "nofile"
         vim.bo.bufhidden = "hide"
         vim.bo.swapfile = false
       end),
-      dashboard.button("f", "📄 > Find files", function()
+      dashboard.button("f", " > Find files", function()
         require("telescope.builtin").find_files { only_cwd = true }
       end),
-      dashboard.button("/", "🔍 > Find grep", require("telescope.builtin").live_grep),
-      dashboard.button("t", "🔭 > Telescope", require("telescope.builtin").builtin),
-      dashboard.button("g", "  > Git", function()
+      dashboard.button("/", "󰮗 > Find grep", require("telescope.builtin").live_grep),
+      dashboard.button("t", " > Telescope", require("telescope.builtin").builtin),
+      dashboard.button("g", " > Git", function()
         vim.cmd "Neogit"
       end),
-      dashboard.button("h", "🔱 > Harpoon", function()
+      dashboard.button("h", " > Harpoon", function()
         local harpoon = require "harpoon"
         harpoon.ui:toggle_quick_menu(harpoon:list())
       end),
