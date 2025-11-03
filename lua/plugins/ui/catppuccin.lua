@@ -7,16 +7,16 @@ return {
     config = function()
       require("catppuccin").setup {
         flavour = "mocha", -- latte, frappe, macchiato, mocha
-        background = { -- :h background
+        background = {     -- :h background
           light = "latte",
           dark = "mocha",
         },
         dim_inactive = {
-          enabled = true, -- dims the background color of inactive window
+          enabled = true,          -- dims the background color of inactive window
           shade = "dark",
-          percentage = 0.15, -- percentage of the shade to apply to the inactive window
+          percentage = 0.15,       -- percentage of the shade to apply to the inactive window
         },
-        styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
+        styles = {                 -- Handles the styles of general hi groups (see `:h highlight-args`):
           comments = { "italic" }, -- Change the style of comments
           conditionals = { "italic" },
           loops = {},
@@ -47,6 +47,15 @@ return {
             enabled = true,
           },
         },
+        custom_highlights = function(C)
+          -- see colors: https://github.com/catppuccin/catppuccin/blob/main/docs/style-guide.md
+          return {
+            -- tabby
+            TabLineSel = { bg = C.surface1, fg = C.text },
+            TabLineSelSep = { bg = C.surface1, fg = C.blue },
+            TabLineFocused = { fg = C.subtext0, style = { 'underline' } }
+          }
+        end
       }
       local ctp_feline = require "catppuccin.special.feline"
       ctp_feline.setup()

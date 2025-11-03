@@ -20,10 +20,13 @@ vim.keymap.set("n", "<leader>ww", function()
   vim.wo.wrap = not vim.wo.wrap
 end, { desc = "Toggle line wrapping" })
 
--- show vim mode (normal, command, insert,...), only do this if you have
--- mini statusline plugin installed
+-- show vim mode (normal, command, insert,...)
+-- only do this if you have mini statusline plugin installed
 opt.cmdheight = 0
-opt.showtabline = 0
+
+-- At default, neovim only display tabline when there are at least two tab pages.
+-- If you want always display tabline:
+-- opt.showtabline = 2
 
 -- textwrap at 80 cols
 -- opt.tw = 80
