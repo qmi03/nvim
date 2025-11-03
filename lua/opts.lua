@@ -42,10 +42,10 @@ opt.smartcase = true
 -- highlight current line
 opt.cursorline = true
 vim.o.guicursor = table.concat({
-  "n-v-c:block-Cursor/lCursor", -- No blink for normal, visual, and command modes
+  "n-v-c:block-Cursor/lCursor",                                -- No blink for normal, visual, and command modes
   "i-ci-ve:block/lCursor-blinkwait500-blinkoff500-blinkon500", -- Blink in insert modes
-  "r-cr:hor20-Cursor/lCursor", -- No blink for replace modes
-  "o:hor50-Cursor/lCursor", -- No blink for operator-pending mode
+  "r-cr:hor20-Cursor/lCursor",                                 -- No blink for replace modes
+  "o:hor50-Cursor/lCursor",                                    -- No blink for operator-pending mode
 }, ",")
 
 -- appearance
