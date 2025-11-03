@@ -16,7 +16,9 @@ opt.autoindent = true
 
 -- line wrapping
 opt.wrap = false
-vim.keymap.set("n", "<leader>ww", ":lua vim.wo.wrap = not vim.wo.wrap<CR>")
+vim.keymap.set("n", "<leader>ww", function()
+  vim.wo.wrap = not vim.wo.wrap
+end, { desc = "Toggle line wrapping" })
 
 -- show vim mode (normal, command, insert,...), only do this if you have
 -- mini statusline plugin installed
