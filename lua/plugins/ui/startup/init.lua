@@ -6,7 +6,6 @@ return {
     "nvim-tree/nvim-web-devicons",
     "stevearc/oil.nvim",
     "nvim-telescope/telescope.nvim",
-    "nvim-telescope/telescope-media-files.nvim",
     {
       "ThePrimeagen/harpoon",
       branch = "harpoon2",
@@ -32,7 +31,34 @@ return {
     local header = headers[math.random(#headers)]
 
     local function pick_color()
-      local colors = { "String", "Identifier", "Keyword", "Number" }
+      local colors = {
+        "String",
+        "Identifier",
+        "Keyword",
+        "Number",
+        "Type",
+        "Function",
+        "Constant",
+        "Operator",
+        "Conditional",
+        "Repeat",
+        "PreProc",
+        "Include",
+        "Structure",
+        "StorageClass",
+        "Boolean",
+        "Character",
+        "Label",
+        "Exception",
+        "Title",
+        "Statement",
+        "Special",
+        "SpecialChar",
+        "Tag",
+        "Delimiter",
+        "Debug",
+        "Macro",
+      }
       return colors[math.random(#colors)]
     end
 
@@ -48,27 +74,27 @@ return {
 
     -- Set menu
     dashboard.section.buttons.val = {
-      dashboard.button("r", "󰔟 > Recent", function()
+      dashboard.button_helper("r", "󰔟 > Recent", function()
         require("telescope.builtin").oldfiles { only_cwd = true }
-      end),
-      dashboard.button("e", " > Empty buffer", function()
+      end, {}, pick_color()),
+      dashboard.button_helper("e", " > Empty buffer", function()
         vim.cmd("enew")
         vim.bo.buftype = "nofile"
         vim.bo.bufhidden = "hide"
         vim.bo.swapfile = false
-      end),
-      dashboard.button("f", " > Find files", function()
+      end, {}, pick_color()),
+      dashboard.button_helper("f", " > Find files", function()
         require("telescope.builtin").find_files { only_cwd = true }
-      end),
-      dashboard.button("/", "󰮗 > Find grep", require("telescope.builtin").live_grep),
-      dashboard.button("t", " > Telescope", require("telescope.builtin").builtin),
-      dashboard.button("g", " > Git", function()
+      end, {}, pick_color()),
+      dashboard.button_helper("/", "󰮗 > Find grep", require("telescope.builtin").live_grep, {}, pick_color()),
+      dashboard.button_helper("t", " > Telescope", require("telescope.builtin").builtin, {}, pick_color()),
+      dashboard.button_helper("g", " > Git", function()
         vim.cmd "Neogit"
-      end),
-      dashboard.button("h", " > Harpoon", function()
+      end, {}, pick_color()),
+      dashboard.button_helper("h", " > Harpoon", function()
         local harpoon = require "harpoon"
         harpoon.ui:toggle_quick_menu(harpoon:list())
-      end),
+      end, {}, pick_color()),
     }
 
     -- Set footer
