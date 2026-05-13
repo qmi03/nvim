@@ -48,7 +48,6 @@ local servers = {
   "rust_analyzer",
   "ruff",
 
-  "sourcekit",
   "svelte",
 
   "taplo",
