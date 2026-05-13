@@ -58,6 +58,8 @@ local servers = {
 
   "unison",
 
+  "vue_ls",
+
   "zls",
 }
 
