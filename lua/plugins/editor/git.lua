@@ -50,7 +50,7 @@ return {
         -- "kitty"   is the graph like https://github.com/isakbm/gitgraph.nvim - use https://github.com/rbong/flog-symbols if you don't use Kitty
         graph_style = "unicode",
         -- Show message with spinning animation when a git command is running.
-        process_spinner = false,
+        process_spinner = true,
         -- Change the default way of opening neogit
         kind = "tab",
         -- Floating window style
