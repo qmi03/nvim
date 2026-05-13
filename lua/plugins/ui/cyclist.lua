@@ -3,15 +3,20 @@ return {
   config = function()
     -- Create autogroup for changing listchars based on filetype
     local cyclist_group =
-      vim.api.nvim_create_augroup("ChangeListChars", { clear = true })
+        vim.api.nvim_create_augroup("ChangeListChars", { clear = true })
+    vim.fn["cyclist#add_listchar_option_set"]("c_listchars", {
+      tab = "→ ",
+      trail = "·",
+      eol = "↲",
+    })
+
     vim.api.nvim_create_autocmd("FileType", {
       group = cyclist_group,
       pattern = "c",
       callback = function()
-        vim.fn["cyclist#activate_listchars"] "c_listchars"
+        vim.fn["cyclist#activate_listchars"]("c_listchars")
       end,
     })
-
     -- Add named configurations
     vim.fn["cyclist#add_listchar_option_set"]("limited", {
       eol = "↲",
