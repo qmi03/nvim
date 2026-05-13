@@ -32,7 +32,7 @@ return {
   on_attach = on_attach,
   offset_encoding = "utf-8",
   settings = {
-    exportPdf = "onSave",
+    -- exportPdf = "onSave",
     outputPath = "$root/target/$dir/$name",
     formatterMode = "typstyle",
     formatterPrintWidth = 80,
