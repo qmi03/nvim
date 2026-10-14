@@ -1,9 +1,9 @@
 return {
   {
-    'nanozuki/tabby.nvim',
+    "nanozuki/tabby.nvim",
     config = function()
-      local api = require('tabby.module.api')
-      local win_name = require('tabby.feature.win_name')
+      local api = require "tabby.module.api"
+      local win_name = require "tabby.feature.win_name"
 
       local function interleave(array, separator)
         local result = {}
@@ -19,7 +19,7 @@ return {
       local function format_filename(filename, max_len)
         max_len = max_len or 20
         -- Extract the stem and extension:
-        local stem, ext = filename:match("(.+)%.([^.]+)$")
+        local stem, ext = filename:match "(.+)%.([^.]+)$"
 
         -- If there's no extension, treat the whole filename as the stem.
         if not stem then
@@ -33,7 +33,9 @@ return {
         if #stem > max_len then
           -- Ensure we have enough space for the ellipsis.
           local trunc_len = max_len - 1
-          if trunc_len < 0 then trunc_len = 0 end
+          if trunc_len < 0 then
+            trunc_len = 0
+          end
           stem = stem:sub(1, trunc_len) .. "…"
         end
 
@@ -60,21 +62,21 @@ return {
 
       local theme = {
         -- Also you can do this: fill = { fg='#f2e9de', bg='#907aa9', style='italic' }
-        fill = 'TabLineFill',
-        tab = 'TabLine',
-        current_tab = 'TabLineSel',
-        current_tab_sep = 'TabLineSelSep',
-        win = 'TabLine',
-        focused = 'TabLineFocused',
+        fill = "TabLineFill",
+        tab = "TabLine",
+        current_tab = "TabLineSel",
+        current_tab_sep = "TabLineSelSep",
+        win = "TabLine",
+        focused = "TabLineFocused",
       }
-      require('tabby').setup({
+      require("tabby").setup {
         option = {
           tab_name = {
             name_fallback = function(tabid)
               local cur_win = api.get_tab_current_win(tabid)
-              local name = ''
+              local name = ""
               if api.is_float_win(cur_win) then
-                name = '[Floating]'
+                name = "[Floating]"
               else
                 name = win_name.get(cur_win)
               end
@@ -89,18 +91,23 @@ return {
               local modified = is_tab_current_win_modified(tab)
               return {
                 {
-                  '▎ ',
+                  "▎ ",
                   hl = tab.is_current() and theme.current_tab_sep or theme.tab,
                 },
                 --line.sep('▎ ', theme.sep, theme.sep),  -- don't use line.sep as it works like shit-get fg from the first group and bg from the second group, why the fuck not using one single group?
                 --tab.number(),
                 format_filename(tab.name()),
-                modified and { '+', hl = tab.is_current() and theme.current_tab_sep or theme.tab },
-                #wins > 1 and ' ◫',
+                modified
+                  and {
+                    "+",
+                    hl = tab.is_current() and theme.current_tab_sep
+                      or theme.tab,
+                  },
+                #wins > 1 and " ◫",
                 --' ',
                 --tab.close_btn(''),
-                tab.close_btn(' ✕'),
-                ' ',
+                tab.close_btn " ✕",
+                " ",
                 hl = tab.is_current() and theme.current_tab or theme.tab,
                 --margin = ' ',
               }
@@ -109,23 +116,23 @@ return {
             interleave(
               line.wins_in_tab(line.api.get_current_tab()).foreach(function(win)
                 return {
-                  ' ',
+                  " ",
                   {
                     format_filename(win.buf_name()),
-                    is_win_modified(win.id) and '+',
+                    is_win_modified(win.id) and "+",
                     hl = win.is_current() and theme.focused or theme.win,
                   },
-                  ' ',
+                  " ",
                   --margin = ' ',
                 }
               end),
-              { '|', hl = theme.win }
+              { "|", hl = theme.win }
             ),
             --hl = theme.fill,
           }
         end,
         -- option = {}, -- setup modules' option,
-      })
+      }
     end,
   },
 }

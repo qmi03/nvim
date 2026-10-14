@@ -51,5 +51,5 @@ vim.keymap.set("i", "<C-f>", "<Right>", { desc = "Move Right in insert mode" })
 vim.keymap.set("i", "<C-b>", "<Left>", { desc = "Move Left in insert mode" })
 
 vim.keymap.set("n", "<leader>ap", function()
-  vim.cmd("Alpha")
+  vim.cmd "Alpha"
 end)

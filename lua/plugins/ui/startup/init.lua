@@ -18,13 +18,13 @@ return {
 
     -- Set header
     local logos = require "plugins.ui.startup.pixel_art"
-    local fortune = require "alpha.fortune" ()
+    local fortune = require "alpha.fortune"()
     local headers = {
       logos.luffy_nika,
       logos.luffy_small,
       logos.one_piece_1,
       logos.one_piece_2,
-      table.concat(fortune, "\n")
+      table.concat(fortune, "\n"),
     }
 
     math.randomseed(vim.loop.hrtime())
@@ -69,7 +69,7 @@ return {
     -- Dynamic header padding
     local height = vim.o.lines - vim.o.cmdheight
     local header_padding =
-        math.floor((height - #dashboard.section.header.val) / 4)
+      math.floor((height - #dashboard.section.header.val) / 4)
     dashboard.section.header.opts.margin = header_padding
 
     -- Set menu
@@ -78,7 +78,7 @@ return {
         require("telescope.builtin").oldfiles { only_cwd = true }
       end, {}, pick_color()),
       dashboard.button_helper("e", " > Empty buffer", function()
-        vim.cmd("enew")
+        vim.cmd "enew"
         vim.bo.buftype = "nofile"
         vim.bo.bufhidden = "hide"
         vim.bo.swapfile = false
@@ -86,8 +86,20 @@ return {
       dashboard.button_helper("f", " > Find files", function()
         require("telescope.builtin").find_files { only_cwd = true }
       end, {}, pick_color()),
-      dashboard.button_helper("/", "󰮗 > Find grep", require("telescope.builtin").live_grep, {}, pick_color()),
-      dashboard.button_helper("t", " > Telescope", require("telescope.builtin").builtin, {}, pick_color()),
+      dashboard.button_helper(
+        "/",
+        "󰮗 > Find grep",
+        require("telescope.builtin").live_grep,
+        {},
+        pick_color()
+      ),
+      dashboard.button_helper(
+        "t",
+        " > Telescope",
+        require("telescope.builtin").builtin,
+        {},
+        pick_color()
+      ),
       dashboard.button_helper("g", " > Git", function()
         vim.cmd "Neogit"
       end, {}, pick_color()),

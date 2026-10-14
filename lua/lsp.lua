@@ -8,8 +8,8 @@ local on_attach = function(client, bufnr)
   client.server_capabilities.document_formatting = true
   local navic = require "nvim-navic"
   if
-      client.server_capabilities.documentSymbolProvider
-      and client.name ~= "null-ls"
+    client.server_capabilities.documentSymbolProvider
+    and client.name ~= "null-ls"
   then
     navic.attach(client, bufnr)
   end
