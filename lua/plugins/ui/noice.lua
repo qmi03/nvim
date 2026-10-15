@@ -70,7 +70,7 @@ return {
       background_colour = "#000000",
       timeout = 1000,
       render = "minimal",
-      stages = "fade",
+      stages = "static",
       top_down = false,
       on_open = function(win)
         vim.api.nvim_win_set_config(win, { focusable = false })
