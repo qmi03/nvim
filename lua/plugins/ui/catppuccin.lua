@@ -75,6 +75,20 @@ return {
       navic.setup {
         highlight = true,
       }
+
+      -- auto-save
+      local autosave_component = {
+        provider = function()
+          -- Check your global variable; change 'autosave_state' if your plugin uses a different variable
+          local is_enable_autosave = vim.g.autosave_state and " 💾 " or ""
+          return is_enable_autosave
+        end,
+        enabled = function()
+          return vim.g.autosave_state == true
+        end,
+      }
+
+      table.insert(components.active[3], autosave_component)
       require("feline").setup {
         components = components,
       }
