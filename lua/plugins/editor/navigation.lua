@@ -245,10 +245,10 @@ return {
 
       vim.keymap.set("n", "<leader>a", function()
         harpoon:list():add()
-      end)
+      end, { desc = "add file to harpoon list" })
       vim.keymap.set("n", "<C-e>", function()
         harpoon.ui:toggle_quick_menu(harpoon:list())
-      end)
+      end, { desc = "toggle harpoon menu" })
       vim.api.nvim_create_user_command("HarpoonToggleQuickMenu", function()
         harpoon.ui:toggle_quick_menu(harpoon:list())
       end, {})
