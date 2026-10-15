@@ -53,3 +53,7 @@ vim.keymap.set("i", "<C-b>", "<Left>", { desc = "Move Left in insert mode" })
 vim.keymap.set("n", "<leader>ap", function()
   vim.cmd "Alpha"
 end)
+
+vim.api.nvim_create_user_command("LspInfo", function()
+  vim.cmd "silent checkhealth vim.lsp"
+end, {})
