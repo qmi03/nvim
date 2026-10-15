@@ -19,29 +19,6 @@ return {
       -- snippets engine
       {
         "L3MON4D3/LuaSnip",
-        dependencies = {
-          "rafamadriz/friendly-snippets",
-        },
-        config = function()
-          require("luasnip.loaders.from_vscode").lazy_load()
-          local ls = require "luasnip"
-          vim.keymap.set({ "i", "s" }, "<M-p>", function()
-            if ls.expand_or_jumpable() then
-              ls.expand_or_jump()
-            end
-          end, {
-            silent = true,
-            desc = "Jump snippet forward",
-          })
-          vim.keymap.set({ "i", "s" }, "<M-n>", function()
-            if ls.expand_or_jumpable(-1) then
-              ls.expand_or_jump(-1)
-            end
-          end, {
-            silent = true,
-            desc = "Jump snippet backwards",
-          })
-        end,
       },
       -- autopairs , autocompletes ()[] etc
       -- {
