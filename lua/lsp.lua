@@ -50,6 +50,7 @@ local servers = {
 
   "rust_analyzer",
   "ruff",
+  "rubocop",
 
   "svelte",
 
@@ -84,10 +85,6 @@ null_ls.setup {
     -- js
     -- require("none-ls.diagnostics.eslint_d"),
     null_ls.builtins.formatting.prettierd,
-
-    -- ruby
-    null_ls.builtins.formatting.rubocop,
-    null_ls.builtins.diagnostics.rubocop,
 
     -- nix format
     null_ls.builtins.formatting.nixpkgs_fmt,
